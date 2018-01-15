@@ -23,6 +23,10 @@ if (process.env.NODE_ENV !== 'test') {
 mongoose.connect(config.mongoUrl)
 mongoose.Promise = global.Promise
 
+app.get('/blogs', (req, res) => {
+    res.redirect('build/index.html');
+})
+
 const loginRouter = require('./controllers/login')
 app.use('/api/login', loginRouter)
 
