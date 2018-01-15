@@ -24,7 +24,11 @@ mongoose.connect(config.mongoUrl)
 mongoose.Promise = global.Promise
 
 app.get('/blogs', (req, res) => {
-    res.redirect('build/index.html');
+    res.sendFile('build/index.html', { root: __dirname });
+})
+
+app.get('/users', (req, res) => {
+    res.sendFile('build/index.html', { root: __dirname });
 })
 
 const loginRouter = require('./controllers/login')
