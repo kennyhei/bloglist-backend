@@ -16,12 +16,12 @@ usersRouter.get('/', async (requets, response) => {
     const users = await User
         .find({})
         .populate('blogs', { title: 1, author: 1, url: 1, likes: 1 })
-        
+
     response.json(users.map(formatUser))
 })
 
 usersRouter.post('/', async (request, response) => {
-    
+
     try {
         const body = request.body
 
@@ -39,7 +39,7 @@ usersRouter.post('/', async (request, response) => {
 
         const user = new User({
             username: body.username,
-            name: body.name,
+            name: body.username,
             passwordHash,
             adult: body.adult || true
         })
